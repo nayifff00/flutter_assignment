@@ -66,6 +66,21 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+  void _decrementCounter(){
+    setState(() {
+
+      if(_counter>0){
+        _counter--;
+      }
+    });
+  }
+  void _restCounter(){
+    setState(() {
+      _counter=0;
+
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
+
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -112,13 +128,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+        children: [
+
+          FloatingActionButton(onPressed: _incrementCounter,child: Icon(Icons.add),),
+          FloatingActionButton(onPressed: _decrementCounter,child: Icon(Icons.minimize),),
+          FloatingActionButton(onPressed: _restCounter,child: Icon(Icons.lock_reset),),
+
+        ],
+
+      )
 
 
-      ),
+
 
     );
   }
